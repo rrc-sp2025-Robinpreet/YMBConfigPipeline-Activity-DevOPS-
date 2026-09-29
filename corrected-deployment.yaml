@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webappdeployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+
+  template:
+    metadata:
+      labels:
+        app: webapp
+
+    spec:
+      containers:
+        - name: nginxcontainer
+          image: nginx:1.27.4
+          ports:
+            - containerPort: 80
